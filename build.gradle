@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+sourceCompatibility = '1.7'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.codekul.firsthibernate.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.1.0.Final'
+//    compile 'org.hibernate:hibernate-java8:5.1.0.Final'
+    compile 'org.hibernate:hibernate-envers:5.1.0.Final'
+    compile 'mysql:mysql-connector-java:5.1.34'
+    testCompile group: 'junit', name: 'junit', version: '4.10'
+}
+jar {
+    manifest {
+        attributes 'Main-Class' : 'com.codekul.firsthibernate.Main'
+    }
+}
+
